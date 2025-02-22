@@ -1,9 +1,5 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-
 import 'dart:io';
-
-import 'package:fpdart/src/either.dart';
-
+import 'package:fpdart/fpdart.dart';
 import 'package:sims_ppob_richard_albert_salendah/core/errors/failure.dart';
 import 'package:sims_ppob_richard_albert_salendah/core/shared/entities/response_api.dart';
 import 'package:sims_ppob_richard_albert_salendah/core/usecase/usecase.dart';

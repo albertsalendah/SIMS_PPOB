@@ -12,6 +12,7 @@
 .swiftpm/
 migrate_working_dir/
 .env
+fca_shell.log
 
 # IntelliJ related
 *.iml
