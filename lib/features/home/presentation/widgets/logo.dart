@@ -47,13 +47,15 @@ class Logo extends StatelessWidget {
               onTap: () {
                 voidCall();
               },
-              child: CircleAvatar(
-                radius: 18,
-                backgroundImage: provider.user != null
-                    ? NetworkImage(provider.user!.imgUrl)
-                    : AssetImage('assets/icons/Profile Photo-1.png'),
-                backgroundColor: AppPallete.transparentColor,
-              ),
+              child: provider.user != null
+                  ? CircleAvatar(
+                      radius: 18,
+                      backgroundImage: !provider.user!.imgUrl.contains('null')
+                          ? NetworkImage(provider.user!.imgUrl)
+                          : AssetImage('assets/icons/Profile Photo-1.png'),
+                      backgroundColor: AppPallete.transparentColor,
+                    )
+                  : const SizedBox.shrink(),
             );
           })
         ],

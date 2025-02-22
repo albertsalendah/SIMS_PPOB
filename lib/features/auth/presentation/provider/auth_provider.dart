@@ -40,8 +40,6 @@ class AuthProvider with ChangeNotifier {
   String? get message => _message;
   ResponseApi<AuthTokens>? get auth => _auth;
 
-  // bool get isAuthenticated => _status == AuthStatus.loginSuccess;
-
   Future<void> login(String email, String password) async {
     _setStatus(AuthStatus.loading);
 
@@ -80,19 +78,15 @@ class AuthProvider with ChangeNotifier {
     result.fold(
       (failure) {
         _auth = auth;
-        print('Here Failed${failure.message}');
         _setStatus(AuthStatus.error, message: failure.message);
       },
-      (res) {
+      (auth) {
         _auth = auth;
-        if (res.status == 0) {
-          print('Here Ok Aauthenticate,${res.message}');
-          _setStatus(AuthStatus.signupSuccess, message: res.message);
+        if (auth.status == 0) {
+          _setStatus(AuthStatus.signupSuccess, message: auth.message);
         } else {
-          print('Here No Unauthenticate,${res.message}');
-          _setStatus(AuthStatus.unauthenticated, message: res.message);
+          _setStatus(AuthStatus.unauthenticated, message: auth.message);
         }
-        notifyListeners();
       },
     );
   }
@@ -120,7 +114,7 @@ class AuthProvider with ChangeNotifier {
   void _setStatus(AuthStatus status, {String? message}) {
     _status = status;
     _message = message;
-    // notifyListeners();
+    notifyListeners();
   }
 
   void resetState() {

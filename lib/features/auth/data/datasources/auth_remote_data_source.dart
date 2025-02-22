@@ -21,8 +21,6 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   final Dio client;
   AuthRemoteDataSourceImpl({required this.client});
 
-  final regisRes = ResponseApiModel<AuthTokenModel>(
-      status: 0, message: "Registrasi berhasil silahkan login", data: null);
   @override
   Future<ResponseApiModel<AuthTokenModel>> login(
       {required String email, required String password}) async {
@@ -79,7 +77,6 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       } else {
         throw ServerException("Invalid response");
       }
-      // return regisRes;
     } on DioException catch (e) {
       if (e.response != null) {
         try {

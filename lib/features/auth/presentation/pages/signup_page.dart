@@ -31,7 +31,6 @@ class _SignupPageState extends State<SignupPage> {
 
   @override
   void initState() {
-    test();
     super.initState();
   }
 
@@ -53,14 +52,6 @@ class _SignupPageState extends State<SignupPage> {
       namaBlkngController.text.trim(),
       passConfirmController.text,
     );
-  }
-
-  void test() {
-    emailController.text = 'test@test.com';
-    namaDpnController.text = 'Test';
-    namaBlkngController.text = 'Tester';
-    passwordController.text = '12345678';
-    passConfirmController.text = '12345678';
   }
 
   @override
@@ -186,13 +177,11 @@ class _SignupPageState extends State<SignupPage> {
                           if ((provider.status == AuthStatus.error ||
                               provider.status == AuthStatus.unauthenticated)) {
                             WidgetsBinding.instance.addPostFrameCallback((_) {
-                              print('Provider Message : ${provider.message}');
                               showSnackBarError(
                                 context: context,
                                 message: provider.message ?? '',
                               );
                             });
-                            provider.resetState();
                           }
 
                           if (provider.status == AuthStatus.signupSuccess) {
@@ -207,7 +196,7 @@ class _SignupPageState extends State<SignupPage> {
                           }
                           return RedButton(
                             disable: false,
-                            text: AppStrings.loginbtn,
+                            text: AppStrings.regisbtn,
                             onPressed: () {
                               _signUp();
                             },

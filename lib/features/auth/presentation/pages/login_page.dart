@@ -139,10 +139,6 @@ class _LoginPageState extends State<LoginPage> {
                           });
                         } else if (provider.status == AuthStatus.loginSuccess) {
                           WidgetsBinding.instance.addPostFrameCallback((_) {
-                            // showSnackBarSuccess(
-                            //   context: context,
-                            //   message: provider.message ?? '',
-                            // );
                             provider.resetState();
                             context.goNamed(RoutesName.navBar);
                           });
